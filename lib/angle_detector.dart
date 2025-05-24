@@ -1,5 +1,4 @@
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+library angle_detector;
+
+export 'src/angle_animated_rotation.dart';
+export 'src/angle_detector.dart';

@@ -15,6 +15,7 @@ class WidgetbookApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Widgetbook.material(
+      initialRoute: '?path=angledetector/angle-detector',
       directories: directories,
       addons: [
         AlignmentAddon(),

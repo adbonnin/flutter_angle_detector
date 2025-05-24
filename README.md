@@ -1,39 +1,57 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Angle detector
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+A Flutter widget that calculates the angle (in radians) between its center and the user's touch
+position.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+[![Pub](https://img.shields.io/pub/v/angle_detector.svg)](https://pub.dartlang.org/packages/angle_detector)
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Add the package to your project by importing it:
 
 ```dart
-const like = 'sample';
+import 'package:angle_detector/angle_detector.dart';
 ```
 
-## Additional information
+Wrap your widget with `AngleDetector` and define the `onAngleChanged` callback. This callback is
+triggered whenever the user touches the screen, and it provides the angle (in radians) between the
+center of the widget and the touch position.
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+In the example below, the detected angle is used inside a `Transform.rotate` widget to visually
+indicate the direction of the user’s interaction.
+
+```dart
+class AngleDetectorExample extends StatefulWidget {
+  const AngleDetectorExample({super.key});
+
+  @override
+  State<AngleDetectorExample> createState() => _AngleDetectorExampleState();
+}
+
+class _AngleDetectorExampleState extends State<MyHomePage> {
+  var _angle = 0.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return AngleDetector(
+      onAngleChanged: _onAngleChanged,
+      child: Transform.rotate(
+        angle: _angle,
+        child: Center(
+          child: Icon(Icons.arrow_upward),
+        ),
+      ),
+    );
+  }
+
+  void _onAngleChanged(double angle) {
+    setState(() => _angle = angle);
+  }
+}
+```
+
+## Use Cases
+
+- Gesture-based rotation
+- Directional UI feedback
+- Game controls or interactive components
