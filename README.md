@@ -3,6 +3,8 @@
 A Flutter widget that calculates the angle (in radians) between its center and the user's touch
 position.
 
+You can check out a live demo using Widgetbook [here](https://adbonnin.github.io/flutter_angle_detector).
+
 [![Pub](https://img.shields.io/pub/v/angle_detector.svg)](https://pub.dartlang.org/packages/angle_detector)
 
 ## Getting started
