@@ -1,6 +1,6 @@
 name: angle_detector
 description: A Flutter widget that calculates the angle (in radians) between its center and the user's touch position.
-version: 0.0.1
+version: 0.0.2
 
 repository: https://github.com/adbonnin/flutter_angle_detector
 issue_tracker: https://github.com/adbonnin/flutter_angle_detector/issues
