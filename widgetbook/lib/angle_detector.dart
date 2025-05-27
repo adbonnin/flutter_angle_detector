@@ -1,6 +1,8 @@
 import 'package:angle_detector/angle_detector.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
+import 'package:widgetbook_workspace/utils/widget_book.dart';
 import 'package:widgetbook_workspace/widgets/direction_indicator.dart';
 
 @widgetbook.UseCase(
@@ -23,14 +25,27 @@ class _AngleDetectorUseCaseState extends State<AngleDetectorUseCase> {
 
   @override
   Widget build(BuildContext context) {
-    return AngleDetector(
-      onAngleChanged: _onAngleChanged,
-      child: AngleAnimatedRotation(
-        angle: _angle,
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.elasticOut,
-        child: const SizedBox.expand(
-          child: DirectionIndicator(),
+    final theme = Theme.of(context);
+
+    return Padding(
+      padding: EdgeInsets.all(8),
+      child: Material(
+        color: theme.colorScheme.primary,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: AngleDetector(
+          onAngleChanged: _onAngleChanged,
+          child: AngleAnimatedRotation(
+            angle: _angle,
+            curve: context.knobs.animationCurve(),
+            duration: context.knobs.animationDuration(),
+            child: SizedBox.expand(
+              child: DirectionIndicator(
+                color: theme.colorScheme.inversePrimary,
+              ),
+            ),
+          ),
         ),
       ),
     );

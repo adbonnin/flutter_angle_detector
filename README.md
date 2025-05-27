@@ -52,6 +52,23 @@ class _AngleDetectorExampleState extends State<MyHomePage> {
 }
 ```
 
+The `AngleAnimatedRotation` widget is also available.
+It wraps an `AnimatedRotation`, but instead of requiring turns, it takes an angle in radians and automatically converts it.
+
+These angles follow the same convention as `Transform.rotate`, making them fully compatible with the values provided by `AngleDetector`.
+
+```dart
+AngleDetector(
+  onAngleChanged: _onAngleChanged,
+  child: AngleAnimatedRotation(
+    angle: _angle,
+    child: Center(
+      child: Icon(Icons.arrow_upward),
+    ),
+  ),
+)
+```
+
 ## Use Cases
 
 - Gesture-based rotation
